@@ -2,6 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Config/GameConfig.h"
+
+
 class Game {
 
 	private:

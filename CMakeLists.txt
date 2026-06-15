@@ -35,3 +35,5 @@ target_link_libraries(SurvivalArenaSFML PRIVATE
 	SFML::Audio 
 	nlohmann_json::nlohmann_json 
         TGUI::TGUI)
+set_target_properties(SurvivalArenaSFML PROPERTIES
+    VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")

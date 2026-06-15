@@ -1,9 +1,9 @@
 #include "Core/Game.h"
 
 Game::Game() :
-	window_(sf::VideoMode(sf::Vector2u(800,800)), "Survival Arena")
+	window_(sf::VideoMode(sf::Vector2u(gConfig.windowSize)), gConfig.windowTitle)
 {
-
+	window_.setFramerateLimit(60);
 }
 
 bool Game::IsRunning()const {
