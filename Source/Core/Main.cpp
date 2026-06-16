@@ -3,10 +3,14 @@
 int main()
 {
 	Game game;
+	sf::Clock clock;
 
 	while (game.IsRunning()) {
 		game.ProcessEvents();
-		game.Update();
+
+		float dt = clock.restart().asSeconds();
+
+		game.Update(dt);
 		game.Render();
 	}
 }

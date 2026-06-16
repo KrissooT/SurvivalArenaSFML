@@ -1,5 +1,9 @@
 #include "Core/Game.h"
 
+#include <SFML/GpuPreference.hpp>
+
+SFML_DEFINE_DISCRETE_GPU_PREFERENCE
+
 Game::Game() :
 	window_(sf::VideoMode(sf::Vector2u(gConfig.windowSize)), gConfig.windowTitle)
 {
@@ -18,11 +22,15 @@ void Game::ProcessEvents() {
 	}
 }
 
-void Game::Update() {
+void Game::Update(float dt) {
 	//TODO
+	player_.Update(dt);
 }
 
 void Game::Render() {
 	window_.clear();
+
+	player_.Draw(window_);
+
 	window_.display();
 }

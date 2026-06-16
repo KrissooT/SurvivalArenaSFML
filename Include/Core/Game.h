@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Config/GameConfig.h"
+#include "Entities/Player.h"
 
 
 class Game {
@@ -10,6 +11,7 @@ class Game {
 	private:
 
 		sf::RenderWindow window_;
+		Player player_;
 
 	public:
 
@@ -18,6 +20,6 @@ class Game {
 		bool IsRunning()const;
 
 		void ProcessEvents();
-		void Update();
+		void Update(float dt);
 		void Render();
 };
