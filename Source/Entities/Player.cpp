@@ -1,4 +1,5 @@
 #include "Entities/Player.h"
+#include <cmath>
 
 Player::Player() :
 	health_(100.f),
@@ -31,4 +32,8 @@ void Player::Update(float dt) {
 
 void Player::Draw(sf::RenderWindow& window) {
 	window.draw(player_);
+}
+
+sf::Vector2f Player::GetPosition()const {
+	return player_.getPosition();
 }

@@ -25,6 +25,7 @@ void Game::ProcessEvents() {
 void Game::Update(float dt) {
 	//TODO
 	player_.Update(dt);
+	zombie_.Update(dt, player_.GetPosition());
 }
 
 void Game::Render() {

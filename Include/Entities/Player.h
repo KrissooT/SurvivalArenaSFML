@@ -17,4 +17,6 @@ class Player : public Entity {
 
 		void Update(float dt) override;
 		void Draw(sf::RenderWindow& window) override;
+
+		sf::Vector2f GetPosition()const;
 };

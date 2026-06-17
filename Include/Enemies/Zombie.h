@@ -11,6 +11,6 @@ class Zombie : public Enemy {
 	public:
 		Zombie();
 
-		void Update(float dt) override;
+		void Update(float dt, sf::Vector2f playerPos) override;
 		void Draw(sf::RenderWindow& window) override;
 };
