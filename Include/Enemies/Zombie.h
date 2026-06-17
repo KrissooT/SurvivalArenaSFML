@@ -9,8 +9,13 @@ class Zombie : public Enemy {
 		sf::RectangleShape zombie_; //Just for now, testing
 
 	public:
+		//Constructor
 		Zombie();
 
+		//Core
 		void Update(float dt, sf::Vector2f playerPos) override;
 		void Draw(sf::RenderWindow& window) override;
+
+		//Getters	
+		sf::FloatRect GetBounds()const override;
 };

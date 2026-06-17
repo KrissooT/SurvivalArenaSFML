@@ -1,10 +1,8 @@
 #include "Entities/Player.h"
+
 #include <cmath>
 
-Player::Player() :
-	health_(100.f),
-	damage_(10.f),
-	speed_(200.f)
+Player::Player() : LivingEntity(100.f, 10.f, 200.f)
 {
 	player_.setSize({ 100.f,50.f });
 	player_.setFillColor(sf::Color::Green);
@@ -36,4 +34,8 @@ void Player::Draw(sf::RenderWindow& window) {
 
 sf::Vector2f Player::GetPosition()const {
 	return player_.getPosition();
+}
+
+sf::FloatRect Player::GetBounds()const {
+	return player_.getGlobalBounds();
 }

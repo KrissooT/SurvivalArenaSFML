@@ -26,6 +26,10 @@ void Game::Update(float dt) {
 	//TODO
 	player_.Update(dt);
 	zombie_.Update(dt, player_.GetPosition());
+
+	if (player_.GetBounds().findIntersection(zombie_.GetBounds())) {
+		player_.TakeDamage(zombie_.GetDamage());
+	}
 }
 
 void Game::Render() {

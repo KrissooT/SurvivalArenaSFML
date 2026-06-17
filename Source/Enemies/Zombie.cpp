@@ -1,12 +1,9 @@
 #include "Enemies/Zombie.h"
+
 #include <cmath>
 
-Zombie::Zombie() {
-
-	health_ = 50.f;
-	damage_ = 5.f;
-	speed_ = 100.f;
-
+Zombie::Zombie() : Enemy(50.f, 5.f, 100.f)
+{
 	zombie_.setSize({ 50.f,50.f });
 	zombie_.setFillColor(sf::Color::Red);
 	zombie_.setOrigin(zombie_.getGlobalBounds().getCenter());
@@ -28,4 +25,8 @@ void Zombie::Update(float dt, sf::Vector2f playerPos) {
 
 void Zombie::Draw(sf::RenderWindow& window) {
 	window.draw(zombie_);
+}
+
+sf::FloatRect Zombie::GetBounds()const {
+	return zombie_.getGlobalBounds();
 }

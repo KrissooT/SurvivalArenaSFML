@@ -17,8 +17,10 @@ class Game {
 
 	public:
 
+		//Constructor
 		Game();
 
+		//Core
 		bool IsRunning()const;
 
 		void ProcessEvents();
