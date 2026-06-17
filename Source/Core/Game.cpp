@@ -31,6 +31,7 @@ void Game::Render() {
 	window_.clear();
 
 	player_.Draw(window_);
+	zombie_.Draw(window_);
 
 	window_.display();
 }

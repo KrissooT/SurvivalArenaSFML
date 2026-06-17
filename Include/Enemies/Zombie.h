@@ -6,6 +6,11 @@
 
 class Zombie : public Enemy {
 	private:
+		sf::RectangleShape zombie_; //Just for now, testing
 
 	public:
+		Zombie();
+
+		void Update(float dt) override;
+		void Draw(sf::RenderWindow& window) override;
 };

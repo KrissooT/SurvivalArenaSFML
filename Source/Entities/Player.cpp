@@ -1,9 +1,14 @@
 #include "Entities/Player.h"
 
-Player::Player() {
-	player_.setSize({ 100,50 });
+Player::Player() :
+	health_(100.f),
+	damage_(10.f),
+	speed_(200.f)
+{
+	player_.setSize({ 100.f,50.f });
 	player_.setFillColor(sf::Color::Green);
-	player_.setPosition({ 400,400 });
+	player_.setOrigin(player_.getGlobalBounds().getCenter());
+	player_.setPosition({ 400.f,400.f });
 }
 
 void Player::Update(float dt) {
@@ -20,7 +25,7 @@ void Player::Update(float dt) {
 		direction /= length;
 	}
 
-	player_.move({ direction * 200.f * dt });
+	player_.move({ direction * speed_ * dt });
 
 }
 

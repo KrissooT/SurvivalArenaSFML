@@ -4,6 +4,7 @@
 
 #include "Config/GameConfig.h"
 #include "Entities/Player.h"
+#include "Enemies/Zombie.h"
 
 
 class Game {
@@ -12,6 +13,7 @@ class Game {
 
 		sf::RenderWindow window_;
 		Player player_;
+		Zombie zombie_;
 
 	public:
 

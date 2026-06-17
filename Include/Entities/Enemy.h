@@ -3,7 +3,9 @@
 #include "Entities/Entity.h"
 
 class Enemy : public Entity {
-	private:
 
-	public:
+	protected:
+		float health_;
+		float damage_;
+		float speed_;
 };
