@@ -1,6 +1,8 @@
 #include "Entities/LivingEntity.h"
+//#include <iostream> //Testing
 
 LivingEntity::LivingEntity(float health, float damage, float speed) :
+	damageCooldown_ = 1.f;
 	health_(health),
 	damage_(damage),
 	speed_(speed)
@@ -8,7 +10,14 @@ LivingEntity::LivingEntity(float health, float damage, float speed) :
 }
 
 void LivingEntity::TakeDamage(float damage) {
+
+	if (damageClock_.getElapsedTime().asSeconds() < damageCooldown_) {
+		return;
+	}
+
 	health_ -= damage;
+	damageClock_.restart();
+	//std::cout << health_ << '\n'; //Testing
 }
 
 bool LivingEntity::IsDead()const {

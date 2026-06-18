@@ -5,6 +5,9 @@
 class LivingEntity : public Entity{
 
 	protected:
+		sf::Clock damageClock_;
+		float damageCooldown_;
+
 		float health_;
 		float damage_;
 		float speed_;

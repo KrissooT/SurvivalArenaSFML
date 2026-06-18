@@ -4,7 +4,9 @@
 
 Player::Player() : LivingEntity(100.f, 10.f, 200.f)
 {
-	player_.setSize({ 100.f,50.f });
+	damageCooldown_ = 1.f;
+
+	player_.setSize({ 50.f,50.f });
 	player_.setFillColor(sf::Color::Green);
 	player_.setOrigin(player_.getGlobalBounds().getCenter());
 	player_.setPosition({ 400.f,400.f });

@@ -4,7 +4,9 @@
 
 Zombie::Zombie() : Enemy(50.f, 5.f, 100.f)
 {
-	zombie_.setSize({ 50.f,50.f });
+	damageCooldown_ = 0.5f;
+
+	zombie_.setSize({ 25.f,25.f });
 	zombie_.setFillColor(sf::Color::Red);
 	zombie_.setOrigin(zombie_.getGlobalBounds().getCenter());
 	zombie_.setPosition({400.f, 200.f});
