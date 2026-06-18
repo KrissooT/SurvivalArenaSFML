@@ -1,11 +1,13 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <vector>
+#include <memory>
 
 #include "Config/GameConfig.h"
-#include "Entities/Player.h"
+#include "Entities/Enemy.h"
 #include "Enemies/Zombie.h"
-
+#include "Entities/Player.h"
 
 class Game {
 
@@ -13,7 +15,7 @@ class Game {
 
 		sf::RenderWindow window_;
 		Player player_;
-		Zombie zombie_;
+		std::vector<std::unique_ptr<Enemy>> enemies_;
 
 	public:
 

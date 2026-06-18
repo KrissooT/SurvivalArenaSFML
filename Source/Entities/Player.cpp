@@ -2,10 +2,8 @@
 
 #include <cmath>
 
-Player::Player() : LivingEntity(100.f, 10.f, 200.f)
+Player::Player() : LivingEntity(100.f, 10.f, 200.f, 1.f)
 {
-	damageCooldown_ = 1.f;
-
 	player_.setSize({ 50.f,50.f });
 	player_.setFillColor(sf::Color::Green);
 	player_.setOrigin(player_.getGlobalBounds().getCenter());

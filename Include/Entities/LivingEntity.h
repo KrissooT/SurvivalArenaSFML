@@ -14,7 +14,7 @@ class LivingEntity : public Entity{
 
 	public:
 		//Constructor
-		LivingEntity(float health, float damage, float speed);
+		LivingEntity(float health, float damage, float speed, float damageCooldown);
 
 		//Core
 		void TakeDamage(float damage);

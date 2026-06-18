@@ -1,8 +1,8 @@
 #include "Entities/LivingEntity.h"
 //#include <iostream> //Testing
 
-LivingEntity::LivingEntity(float health, float damage, float speed) :
-	damageCooldown_ = 1.f;
+LivingEntity::LivingEntity(float health, float damage, float speed, float damageCooldown) :
+	damageCooldown_(damageCooldown),
 	health_(health),
 	damage_(damage),
 	speed_(speed)
