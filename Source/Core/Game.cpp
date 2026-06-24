@@ -7,10 +7,6 @@ SFML_DEFINE_DISCRETE_GPU_PREFERENCE
 Game::Game() :
 	window_(sf::VideoMode(sf::Vector2u(gConfig.windowSize)), gConfig.windowTitle)
 {
-	enemies_.push_back(std::make_unique<Zombie>());
-	enemies_.push_back(std::make_unique<Zombie>());
-	enemies_.push_back(std::make_unique<Zombie>());
-
 	window_.setFramerateLimit(60);
 }
 
@@ -29,6 +25,9 @@ void Game::ProcessEvents() {
 void Game::Update(float dt) {
 	//TODO
 	player_.Update(dt);
+
+	enemySpawner_.Update(enemies_);
+
 	for (auto& enemy : enemies_) {
 		enemy->Update(dt, player_.GetPosition());
 		

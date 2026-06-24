@@ -6,6 +6,7 @@
 
 #include "Config/GameConfig.h"
 #include "Entities/Enemy.h"
+#include "Managers/EnemySpawner.h"
 #include "Enemies/Zombie.h"
 #include "Entities/Player.h"
 
@@ -15,6 +16,7 @@ class Game {
 
 		sf::RenderWindow window_;
 		Player player_;
+		EnemySpawner enemySpawner_;
 		std::vector<std::unique_ptr<Enemy>> enemies_;
 
 	public:
