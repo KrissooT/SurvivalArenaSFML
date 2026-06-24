@@ -4,6 +4,10 @@
 
 class Enemy : public LivingEntity {
 
+	protected:
+
+		void MoveToPlayer(float dt, sf::Vector2f playerPos, sf::Shape& monsterShape);
+
 	public:
 		//Constructor
 		Enemy(float health, float damage, float speed, float damageCooldown);

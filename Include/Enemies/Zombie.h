@@ -18,4 +18,5 @@ class Zombie : public Enemy {
 
 		//Getters	
 		sf::FloatRect GetBounds()const override;
+
 };

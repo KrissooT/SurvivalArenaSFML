@@ -2,10 +2,24 @@
 #include "Config/GameConfig.h"
 
 #include <random>
+#include <cmath>
 
 Enemy::Enemy(float health, float damage, float speed, float damageCooldown) :
 	LivingEntity(health, damage, speed, damageCooldown)
 {
+}
+
+void Enemy::MoveToPlayer(float dt, sf::Vector2f playerPos, sf::Shape& monsterShape) {
+
+	sf::Vector2f monsterPos = monsterShape.getPosition();
+	sf::Vector2f direction = playerPos - monsterPos;
+
+	float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+
+	if (length != 0.f) {
+		direction /= length;
+	}
+	monsterShape.move({ direction * speed_ * dt });
 }
 
 sf::Vector2f Enemy::RandomPosition()const {
