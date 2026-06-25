@@ -17,6 +17,7 @@ class Zombie : public Enemy {
 		void Draw(sf::RenderWindow& window) override;
 
 		//Getters	
+		sf::Vector2f GetPosition()const override;
 		sf::FloatRect GetBounds()const override;
 
 };

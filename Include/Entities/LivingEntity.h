@@ -2,6 +2,8 @@
 
 #include "Entities/Entity.h"
 
+#include <SFML/System/Clock.hpp>
+
 class LivingEntity : public Entity{
 
 	protected:

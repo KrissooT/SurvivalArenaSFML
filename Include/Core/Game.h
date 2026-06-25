@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "Config/GameConfig.h"
+#include "Projectiles/Projectile.h"
 #include "Entities/Enemy.h"
 #include "Managers/EnemySpawner.h"
 #include "Enemies/Zombie.h"
@@ -18,6 +19,7 @@ class Game {
 		Player player_;
 		EnemySpawner enemySpawner_;
 		std::vector<std::unique_ptr<Enemy>> enemies_;
+		std::vector<std::unique_ptr<Projectile>> projectiles_;
 
 	public:
 

@@ -18,6 +18,10 @@ void Zombie::Draw(sf::RenderWindow& window) {
 	window.draw(zombie_);
 }
 
+sf::Vector2f Zombie::GetPosition()const {
+	return zombie_.getPosition();
+}
+
 sf::FloatRect Zombie::GetBounds()const {
 	return zombie_.getGlobalBounds();
 }

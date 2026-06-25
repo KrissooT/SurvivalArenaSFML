@@ -1,4 +1,5 @@
 #include "Entities/Player.h"
+#include "Projectiles/Bullet.h"
 
 #include <cmath>
 
@@ -30,6 +31,45 @@ void Player::Update(float dt) {
 
 void Player::Draw(sf::RenderWindow& window) {
 	window.draw(player_);
+}
+
+void Player::Shoot
+(std::vector<std::unique_ptr<Projectile>>& projectiles,
+const std::vector<std::unique_ptr<Enemy>>& enemies) 
+{
+	if (shootClock_.getElapsedTime().asSeconds() < shootInterval_) {
+		return;
+	}
+
+	Enemy* closestEnemy = nullptr;
+	float closestDistance = attackRange_;
+
+	for (const auto& enemy : enemies) {
+		sf::Vector2f difference = enemy->GetPosition() - GetPosition();
+
+		float distance = std::sqrt(difference.x * difference.x + difference.y * difference.y);
+
+		if (distance < closestDistance) {
+			closestDistance = distance;
+			closestEnemy = enemy.get();
+		}
+	}
+
+	if (closestEnemy == nullptr) {
+		return;
+	}
+
+	sf::Vector2f direction = closestEnemy->GetPosition() - GetPosition();
+
+	float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+
+	if (length != 0) {
+		direction /= length;
+	}
+
+	projectiles.push_back(std::make_unique<Bullet>(GetPosition(), direction));
+
+	shootClock_.restart();
 }
 
 sf::Vector2f Player::GetPosition()const {

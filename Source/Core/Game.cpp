@@ -36,12 +36,42 @@ void Game::Update(float dt) {
 			player_.TakeDamage(enemy->GetDamage());
 		}
 	}
+
+	player_.Shoot(projectiles_, enemies_);
+
+	for (auto& projectile : projectiles_) {
+		projectile->Update(dt);
+		for (auto& enemy : enemies_) {
+			if (projectile->GetBounds().findIntersection(enemy->GetBounds())) {
+				enemy->TakeDamage(projectile->GetDamage());
+				projectile->Destroy();
+				break;
+			}
+		}
+	}
+
+	std::erase_if(projectiles_,
+		[](const std::unique_ptr<Projectile>& projectile)
+		{
+			return projectile->IsDestroy();
+		});
+
+	std::erase_if(enemies_,
+		[](const std::unique_ptr<Enemy>& enemy)
+		{
+			return enemy->IsDead();
+		});
 }
 
 void Game::Render() {
 	window_.clear();
 
 	player_.Draw(window_);
+
+	for (auto& projectile : projectiles_) {
+		projectile->Draw(window_);
+	}
+
 	for (auto& enemy : enemies_) {
 		enemy->Draw(window_);
 	}
