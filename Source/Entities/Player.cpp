@@ -8,7 +8,10 @@ Player::Player() : LivingEntity(100.f, 10.f, 200.f, 1.f)
 	player_.setSize({ 50.f,50.f });
 	player_.setFillColor(sf::Color::Green);
 	player_.setOrigin(player_.getGlobalBounds().getCenter());
-	player_.setPosition({ 400.f,400.f });
+
+	sf::Vector2f playerPos = { gConfig.windowSize.x / 2.f, gConfig.windowSize.y / 2.f };
+
+	player_.setPosition({playerPos});
 }
 
 void Player::Update(float dt) {

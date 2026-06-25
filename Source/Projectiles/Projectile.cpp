@@ -7,6 +7,13 @@ Projectile::Projectile(float damage, float speed) :
 
 }
 
+bool Projectile::IsOutOfBounds(sf::Vector2f position)const {
+
+	return position.x < 0.f || position.y < 0.f ||
+		   position.x > gConfig.windowSize.x || position.y > gConfig.windowSize.y;
+
+}
+
 void Projectile::Destroy() {
 	destroy_ = true;
 }
@@ -19,6 +26,6 @@ float Projectile::GetSpeed()const {
 	return speed_;
 }
 
-bool Projectile::IsDestroy()const {
+bool Projectile::IsDestroyed()const {
 	return destroy_;
 }

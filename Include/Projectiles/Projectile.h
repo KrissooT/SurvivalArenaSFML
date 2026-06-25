@@ -12,6 +12,8 @@ class Projectile : public Entity {
 
 		bool destroy_ = false;
 
+		bool IsOutOfBounds(sf::Vector2f position)const;
+
 	public:
 		//Constructor
 		Projectile(float damage, float speed);
@@ -21,6 +23,6 @@ class Projectile : public Entity {
 		//Getters
 		float GetDamage()const;
 		float GetSpeed()const;
-		bool IsDestroy()const;
+		bool IsDestroyed()const;
 
 };

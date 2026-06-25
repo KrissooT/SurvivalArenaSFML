@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 
-#include "Config/GameConfig.h"
+
 #include "Projectiles/Projectile.h"
 #include "Entities/Enemy.h"
 #include "Managers/EnemySpawner.h"

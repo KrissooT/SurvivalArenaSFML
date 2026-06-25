@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Config/GameConfig.h"
+
 #include <SFML/Graphics.hpp>
 
 class Entity {

@@ -41,6 +41,9 @@ void Game::Update(float dt) {
 
 	for (auto& projectile : projectiles_) {
 		projectile->Update(dt);
+	}
+
+	for (auto& projectile : projectiles_) {
 		for (auto& enemy : enemies_) {
 			if (projectile->GetBounds().findIntersection(enemy->GetBounds())) {
 				enemy->TakeDamage(projectile->GetDamage());
@@ -53,7 +56,7 @@ void Game::Update(float dt) {
 	std::erase_if(projectiles_,
 		[](const std::unique_ptr<Projectile>& projectile)
 		{
-			return projectile->IsDestroy();
+			return projectile->IsDestroyed();
 		});
 
 	std::erase_if(enemies_,

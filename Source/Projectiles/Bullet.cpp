@@ -12,6 +12,11 @@ Bullet::Bullet(sf::Vector2f startPos, sf::Vector2f direction) :
 
 void Bullet::Update(float dt) {
 	bullet_.move({direction_ * speed_ * dt});
+
+	if (IsOutOfBounds(bullet_.getPosition())) {
+		Destroy();
+	}
+
 }
 
 void Bullet::Draw(sf::RenderWindow& window) {
