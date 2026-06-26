@@ -9,6 +9,7 @@
 #include "Entities/Enemy.h"
 #include "Managers/EnemySpawner.h"
 #include "Enemies/Zombie.h"
+#include "Enemies/Skeleton.h"
 #include "Entities/Player.h"
 
 class Game {
