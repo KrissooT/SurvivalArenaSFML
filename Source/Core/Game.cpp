@@ -25,7 +25,11 @@ void Game::ProcessEvents() {
 void Game::Update(float dt) {
 	//TODO
 	player_.Update(dt);
-	hud_.Update(player_);
+
+	if (player_.IsDead()) {
+		window_.close();
+		return;
+	}
 
 	enemySpawner_.Update(enemies_);
 
@@ -65,6 +69,8 @@ void Game::Update(float dt) {
 		{
 			return enemy->IsDead();
 		});
+
+	hud_.Update(player_);
 }
 
 void Game::Render() {
