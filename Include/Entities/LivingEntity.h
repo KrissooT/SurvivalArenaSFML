@@ -11,12 +11,14 @@ class LivingEntity : public Entity{
 		float damageCooldown_;
 
 		float health_;
+		float maxHealth_;
 		float damage_;
 		float speed_;
+		
 
 	public:
 		//Constructor
-		LivingEntity(float health, float damage, float speed, float damageCooldown);
+		LivingEntity(float maxHealth, float damage, float speed, float damageCooldown);
 
 		//Core
 		void TakeDamage(float damage);
@@ -24,6 +26,7 @@ class LivingEntity : public Entity{
 
 		//Getters
 		float GetHealth()const;
+		float GetMaxHealth()const;
 		float GetDamage()const;
 		float GetSpeed()const;
 };

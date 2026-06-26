@@ -1,9 +1,10 @@
 #include "Entities/LivingEntity.h"
 //#include <iostream> //Testing
 
-LivingEntity::LivingEntity(float health, float damage, float speed, float damageCooldown) :
+LivingEntity::LivingEntity(float maxHealth, float damage, float speed, float damageCooldown) :
 	damageCooldown_(damageCooldown),
-	health_(health),
+	maxHealth_(maxHealth),
+	health_(maxHealth),
 	damage_(damage),
 	speed_(speed)
 {
@@ -29,6 +30,10 @@ bool LivingEntity::IsDead()const {
 
 float LivingEntity::GetHealth()const {
 	return health_;
+}
+
+float LivingEntity::GetMaxHealth()const {
+	return maxHealth_;
 }
 
 float LivingEntity::GetDamage()const {

@@ -25,6 +25,7 @@ void Game::ProcessEvents() {
 void Game::Update(float dt) {
 	//TODO
 	player_.Update(dt);
+	hud_.Update(player_);
 
 	enemySpawner_.Update(enemies_);
 
@@ -78,6 +79,8 @@ void Game::Render() {
 	for (auto& enemy : enemies_) {
 		enemy->Draw(window_);
 	}
+
+	hud_.Draw(window_);
 
 	window_.display();
 }

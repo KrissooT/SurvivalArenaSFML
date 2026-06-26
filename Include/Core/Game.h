@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 
-
+#include "UI/HUD.h"
 #include "Projectiles/Projectile.h"
 #include "Entities/Enemy.h"
 #include "Managers/EnemySpawner.h"
@@ -20,6 +20,7 @@ class Game {
 		EnemySpawner enemySpawner_;
 		std::vector<std::unique_ptr<Enemy>> enemies_;
 		std::vector<std::unique_ptr<Projectile>> projectiles_;
+		HUD hud_;
 
 	public:
 
