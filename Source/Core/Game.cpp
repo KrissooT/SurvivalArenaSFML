@@ -31,7 +31,7 @@ void Game::Update(float dt) {
 		return;
 	}
 
-	enemySpawner_.Update(enemies_);
+	enemySpawner_.Update(enemies_, player_.GetPosition());
 
 	for (auto& enemy : enemies_) {
 		enemy->Update(dt, player_.GetPosition());

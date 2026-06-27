@@ -9,7 +9,7 @@ class Skeleton : public Enemy {
 
 	public:
 		//Constructor
-		Skeleton();
+		Skeleton(sf::Vector2f playerPos);
 
 		//Core
 		void Update(float dt, sf::Vector2f playerPos) override;

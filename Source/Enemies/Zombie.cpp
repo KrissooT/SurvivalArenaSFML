@@ -2,12 +2,12 @@
 
 #include <cmath>
 
-Zombie::Zombie() : Enemy(50.f, 5.f, 100.f, 0.3f)
+Zombie::Zombie(sf::Vector2f playerPos) : Enemy(50.f, 5.f, 100.f, 0.3f)
 {
 	zombie_.setSize({ 25.f,25.f });
 	zombie_.setFillColor(sf::Color::Red);
 	zombie_.setOrigin(zombie_.getGlobalBounds().getCenter());
-	zombie_.setPosition(RandomPosition());
+	zombie_.setPosition(RandomPosition(playerPos));
 }
 
 void Zombie::Update(float dt, sf::Vector2f playerPos) {

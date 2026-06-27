@@ -22,15 +22,25 @@ void Enemy::MoveToPlayer(float dt, sf::Vector2f playerPos, sf::Shape& monsterSha
 	monsterShape.move({ direction * speed_ * dt });
 }
 
-sf::Vector2f Enemy::RandomPosition()const {
-	std::random_device rd;
-	std::mt19937 gen(rd());
+sf::Vector2f Enemy::RandomPosition(sf::Vector2f playerPos)const {
 
-	std::uniform_real_distribution<float> xDist(0.f, (float)gConfig.windowSize.x);
-	std::uniform_real_distribution<float> yDist(0.f, (float)gConfig.windowSize.y);
+	static std::random_device rd;
+	static std::mt19937 gen(rd());
 
-	float x = xDist(gen);
-	float y = yDist(gen);
+	std::uniform_real_distribution<float> xDist(0.f, static_cast<float>(gConfig.windowSize.x));
+	std::uniform_real_distribution<float> yDist(0.f, static_cast<float>(gConfig.windowSize.y));
 
-	return { x, y };
+	constexpr float minDistanceToSpawn = 150.f;
+
+	sf::Vector2f pos;
+	float dist = 0.f;
+
+	do {
+		pos = { xDist(gen), yDist(gen) };
+
+		sf::Vector2f dif = pos - playerPos;
+		dist = std::sqrt(dif.x * dif.x + dif.y * dif.y);
+	} while (dist < minDistanceToSpawn);
+
+	return pos;
 }

@@ -8,7 +8,7 @@ class Zombie : public Enemy {
 
 	public:
 		//Constructor
-		Zombie();
+		Zombie(sf::Vector2f playerPos);
 
 		//Core
 		void Update(float dt, sf::Vector2f playerPos) override;

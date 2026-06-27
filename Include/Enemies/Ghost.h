@@ -8,7 +8,7 @@ class Ghost : public Enemy {
 		sf::RectangleShape ghost_; //Just testing
 	public:
 		//Constructor
-		Ghost();
+		Ghost(sf::Vector2f playerPos);
 
 		//Core
 		void Update(float dt, sf::Vector2f playerPos)override;

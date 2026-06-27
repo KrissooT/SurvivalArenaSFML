@@ -1,11 +1,11 @@
 #include "Enemies/Ghost.h"
 
-Ghost::Ghost() : Enemy(160.f, 20.f, 180.f, 0.3f)
+Ghost::Ghost(sf::Vector2f playerPos) : Enemy(160.f, 20.f, 180.f, 0.3f)
 {
 	ghost_.setSize({25.f, 25.f});
 	ghost_.setFillColor(sf::Color::Cyan);
 	ghost_.setOrigin(ghost_.getGlobalBounds().getCenter());
-	ghost_.setPosition(RandomPosition());
+	ghost_.setPosition(RandomPosition(playerPos));
 }
 
 void Ghost::Update(float dt, sf::Vector2f playerPos) {
