@@ -19,6 +19,10 @@ class EnemySpawner {
 		float spawnIntervalSkeleton_ = 3.f;
 		int skeletonsToSpawn_ = 2;
 
+		sf::Clock spawnTimerGhost_;
+		float spawnIntervalGhost_ = 4.f;
+		int ghostsToSpawn_ = 2;
+
 	public:
 		void Update(std::vector<std::unique_ptr<Enemy>>& enemies);
 
