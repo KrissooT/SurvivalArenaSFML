@@ -1,7 +1,7 @@
 #include "Projectiles/Bullet.h"
 
-Bullet::Bullet(sf::Vector2f startPos, sf::Vector2f direction) : 
-	Projectile(50.f, 300.f),
+Bullet::Bullet(sf::Vector2f startPos, sf::Vector2f direction, float damage) : 
+	Projectile(damage, 300.f),
 	direction_(direction)
 {
 	bullet_.setRadius(8.f);

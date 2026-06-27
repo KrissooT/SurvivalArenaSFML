@@ -2,10 +2,15 @@
 #include "Enemies/Zombie.h"
 #include "Enemies/Skeleton.h"
 #include "Enemies/Ghost.h"
+#include "Enemies/Boss.h"
 
 void EnemySpawner::Update(std::vector<std::unique_ptr<Enemy>>& enemies) {
 
 	float elapsed = globalClock_.getElapsedTime().asSeconds();
+
+	if (bossActive) {
+		return;
+	}
 
 	if (spawnTimerZombie_.getElapsedTime().asSeconds() >= spawnIntervalZombie_) {
 
@@ -32,4 +37,20 @@ void EnemySpawner::Update(std::vector<std::unique_ptr<Enemy>>& enemies) {
 			spawnTimerGhost_.restart();
 		}
 	}
+
+	if (elapsed > 180) {
+		enemies.clear();
+		enemies.push_back(std::make_unique<Boss>());
+		bossActive = true;
+	}
+}
+
+void EnemySpawner::RestartStage() {
+	globalClock_.restart();
+	bossActive = false;
+	stage++;
+}
+
+bool EnemySpawner::IsBossActive()const {
+	return bossActive;
 }

@@ -10,6 +10,7 @@ class EnemySpawner {
 
 	private:
 		sf::Clock globalClock_;
+		int stage = 1; // This will scale emeies hp, dmg and speed later;
 
 		sf::Clock spawnTimerZombie_;
 		float spawnIntervalZombie_ = 2.f;
@@ -23,7 +24,15 @@ class EnemySpawner {
 		float spawnIntervalGhost_ = 4.f;
 		int ghostsToSpawn_ = 2;
 
+		sf::Clock spawnTimerBoss_;
+		int bossToSpawn_ = 1;
+		bool bossActive = false;
+
 	public:
 		void Update(std::vector<std::unique_ptr<Enemy>>& enemies);
+		void RestartStage();
+
+		bool IsBossActive()const;
+
 
 };

@@ -11,7 +11,7 @@ class Bullet : public Projectile {
 		sf::Vector2f direction_;
 
 	public:
-		Bullet(sf::Vector2f startPos, sf::Vector2f direction);
+		Bullet(sf::Vector2f startPos, sf::Vector2f direction, float damage);
 
 		void Update(float dt) override;
 		void Draw(sf::RenderWindow& window) override;

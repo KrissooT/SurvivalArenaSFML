@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-Player::Player() : LivingEntity(100.f, 10.f, 200.f, 1.f)
+Player::Player() : LivingEntity(100.f, 50.f, 200.f, 1.f)
 {
 	player_.setSize({ 50.f,50.f });
 	player_.setFillColor(sf::Color::Green);
@@ -70,7 +70,7 @@ const std::vector<std::unique_ptr<Enemy>>& enemies)
 		direction /= length;
 	}
 
-	projectiles.push_back(std::make_unique<Bullet>(GetPosition(), direction));
+	projectiles.push_back(std::make_unique<Bullet>(GetPosition(), direction, GetDamage()));
 
 	shootClock_.restart();
 }

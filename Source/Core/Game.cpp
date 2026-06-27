@@ -70,6 +70,10 @@ void Game::Update(float dt) {
 			return enemy->IsDead();
 		});
 
+	if (enemySpawner_.IsBossActive() && enemies_.empty()) {
+		enemySpawner_.RestartStage();
+	}
+
 	hud_.Update(player_);
 }
 
