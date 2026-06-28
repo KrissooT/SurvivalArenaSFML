@@ -9,6 +9,8 @@
 #include "Entities/Enemy.h"
 #include "Managers/EnemySpawner.h"
 #include "Entities/Player.h"
+#include "Pickups/Pickup.h"
+#include "Pickups/XpOrb.h"
 
 class Game {
 
@@ -19,6 +21,7 @@ class Game {
 		EnemySpawner enemySpawner_;
 		std::vector<std::unique_ptr<Enemy>> enemies_;
 		std::vector<std::unique_ptr<Projectile>> projectiles_;
+		std::vector<std::unique_ptr<Pickup>> pickups_;
 		HUD hud_;
 
 	public:

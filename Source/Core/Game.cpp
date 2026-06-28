@@ -53,9 +53,16 @@ void Game::Update(float dt) {
 			if (projectile->GetBounds().findIntersection(enemy->GetBounds())) {
 				enemy->TakeDamage(projectile->GetDamage());
 				projectile->Destroy();
+				if (enemy->IsDead()) {
+					pickups_.push_back(std::make_unique<XpOrb>(enemy->GetPosition(), enemy->GetXp()));
+				}
 				break;
 			}
 		}
+	}
+
+	for (auto& pickup : pickups_) {
+		pickup->Update(dt, player_);
 	}
 
 	std::erase_if(projectiles_,
@@ -88,6 +95,10 @@ void Game::Render() {
 
 	for (auto& enemy : enemies_) {
 		enemy->Draw(window_);
+	}
+
+	for (auto& pickup : pickups_) {
+		pickup->Draw(window_);
 	}
 
 	hud_.Draw(window_);

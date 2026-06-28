@@ -1,6 +1,6 @@
 #include "Enemies/Skeleton.h"
 
-Skeleton::Skeleton(sf::Vector2f playerPos) : Enemy(80.f, 10.f, 125.f, 0.3f)
+Skeleton::Skeleton(sf::Vector2f playerPos) : Enemy(80.f, 10.f, 125.f, 0.3f, 15)
 {
 	skeleton_.setSize({ 25.f,25.f });
 	skeleton_.setFillColor(sf::Color(119, 0, 200));

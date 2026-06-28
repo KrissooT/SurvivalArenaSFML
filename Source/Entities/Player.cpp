@@ -82,3 +82,7 @@ sf::Vector2f Player::GetPosition()const {
 sf::FloatRect Player::GetBounds()const {
 	return player_.getGlobalBounds();
 }
+
+float Player::GetXpAttractionBonus()const {
+	return xpAttractionBonus_;
+}

@@ -15,6 +15,8 @@ class Player : public LivingEntity {
 		float shootInterval_ = 1.f;
 		float attackRange_ = 250.f;
 
+		float xpAttractionBonus_ = 0.f;
+
 	public:
 		//Constructor
 		Player();
@@ -29,4 +31,6 @@ class Player : public LivingEntity {
 		//Getters
 		sf::Vector2f GetPosition()const override;
 		sf::FloatRect GetBounds()const override;
+
+		float GetXpAttractionBonus()const;
 };

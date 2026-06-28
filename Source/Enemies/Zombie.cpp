@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-Zombie::Zombie(sf::Vector2f playerPos) : Enemy(50.f, 5.f, 100.f, 0.3f)
+Zombie::Zombie(sf::Vector2f playerPos) : Enemy(50.f, 5.f, 100.f, 0.3f, 5)
 {
 	zombie_.setSize({ 25.f,25.f });
 	zombie_.setFillColor(sf::Color::Red);

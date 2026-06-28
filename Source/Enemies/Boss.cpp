@@ -1,6 +1,6 @@
 #include "Enemies/Boss.h"
 
-Boss::Boss() : Enemy(400.f, 30.f, 125.f, 0.3f)
+Boss::Boss() : Enemy(400.f, 30.f, 125.f, 0.3f, 200)
 {
 	boss_.setSize({75.f, 75.f});
 	boss_.setFillColor(sf::Color(255, 165, 0));

@@ -4,8 +4,9 @@
 #include <random>
 #include <cmath>
 
-Enemy::Enemy(float health, float damage, float speed, float damageCooldown) :
-	LivingEntity(health, damage, speed, damageCooldown)
+Enemy::Enemy(float health, float damage, float speed, float damageCooldown, int xp) :
+	LivingEntity(health, damage, speed, damageCooldown),
+	xp_(xp)
 {
 }
 
@@ -43,4 +44,8 @@ sf::Vector2f Enemy::RandomPosition(sf::Vector2f playerPos)const {
 	} while (dist < minDistanceToSpawn);
 
 	return pos;
+}
+
+int Enemy::GetXp()const {
+	return xp_;
 }
