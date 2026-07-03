@@ -8,8 +8,10 @@ class Pickup : public Entity {
 	protected:
 		void MoveToPlayer(float dt, sf::Vector2f playerPos, sf::Shape& itemShape);
 
+		bool collected_ = false;
+
 		float attractionRadius_;
-		float attractionSpeed = 250.f;
+		float attractionSpeed_ = 250.f;
 
 	public:
 		//Constructor
@@ -17,6 +19,10 @@ class Pickup : public Entity {
 
 		//Core
 		virtual void Update(float dt, Player& player) = 0;
+		virtual void OnPickup(Player& player) = 0;
+
+		void Collect();
 
 		//Getters
+		bool IsCollected()const;
 };

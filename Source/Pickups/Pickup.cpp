@@ -15,6 +15,14 @@ void Pickup::MoveToPlayer(float dt, sf::Vector2f playerPos, sf::Shape& itemShape
 	if (length != 0.f) {
 		direction /= length;
 	}
-	itemShape.move({ direction * attractionSpeed * dt });
+	itemShape.move({ direction * attractionSpeed_ * dt });
 
+}
+
+void Pickup::Collect() {
+	collected_ = true;
+}
+
+bool Pickup::IsCollected()const {
+	return collected_;
 }

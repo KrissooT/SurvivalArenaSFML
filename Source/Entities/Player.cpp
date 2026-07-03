@@ -75,6 +75,17 @@ const std::vector<std::unique_ptr<Enemy>>& enemies)
 	shootClock_.restart();
 }
 
+void Player::AddXp(int amount) {
+	currentXp_ += amount;
+
+	while (currentXp_ >= xpToNextLevel_)
+	{
+		currentXp_ -= xpToNextLevel_;
+		level_++;
+		xpToNextLevel_ += 250; // Hardcode for now, later mby add a system to scale;
+	}
+}
+
 sf::Vector2f Player::GetPosition()const {
 	return player_.getPosition();
 }
@@ -85,4 +96,16 @@ sf::FloatRect Player::GetBounds()const {
 
 float Player::GetXpAttractionBonus()const {
 	return xpAttractionBonus_;
+}
+
+int Player::GetCurrentXp()const {
+	return currentXp_;
+}
+
+int Player::GetXpToNextLevel()const {
+	return xpToNextLevel_;
+}
+
+int Player::GetLevel()const {
+	return level_;
 }

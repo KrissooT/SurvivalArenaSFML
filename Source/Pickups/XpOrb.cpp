@@ -27,6 +27,10 @@ void XpOrb::Update(float dt,Player& player) {
 
 }
 
+void XpOrb::OnPickup(Player& player) {
+	player.AddXp(xp_);
+}
+
 void XpOrb::Draw(sf::RenderWindow& window) {
 	window.draw(xpOrb_);
 }

@@ -63,7 +63,18 @@ void Game::Update(float dt) {
 
 	for (auto& pickup : pickups_) {
 		pickup->Update(dt, player_);
+
+		if (pickup->GetBounds().findIntersection(player_.GetBounds())) {
+			pickup->OnPickup(player_);
+			pickup->Collect();
+		}
+
 	}
+
+	std::erase_if(pickups_,
+		[](const std::unique_ptr<Pickup>& pickup) {
+			return pickup->IsCollected();
+		});
 
 	std::erase_if(projectiles_,
 		[](const std::unique_ptr<Projectile>& projectile)

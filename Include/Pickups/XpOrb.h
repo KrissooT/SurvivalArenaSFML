@@ -16,6 +16,7 @@ class XpOrb : public Pickup {
 		//Core
 		void Update(float dt) override {}
 		void Update(float dt, Player& player) override;
+		void OnPickup(Player& player) override;
 		void Draw(sf::RenderWindow& window) override;
 
 		//Getters
