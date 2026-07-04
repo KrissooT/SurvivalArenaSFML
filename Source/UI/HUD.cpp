@@ -8,35 +8,45 @@ HUD::HUD() :
 	healthDisplay_(font_),
 	healthBarBackgroundTexture_("Content/Backgrounds/HealthBarBackground.png"),
 	healthBarBackgroundSprite_(healthBarBackgroundTexture_),
-	maxHealthBarWidth_(180.f),
+	maxHealthBarWidth_(243.5f),
 	xpBarBackgroundTexture_("Content/Backgrounds/XpBarBackground.png"),
 	xpBarBackgroundSprite_(xpBarBackgroundTexture_),
-	maxXpBarWidth_(610.f)
+	maxXpBarWidth_(735.f),
+	heartIconTexture_("Content/Backgrounds/Heart.png"),
+	heartIconSprite_(heartIconTexture_)
 {
 	//Health
-	healthBar_.setSize({ maxHealthBarWidth_, 20.f });
+	healthBar_.setSize({ maxHealthBarWidth_,24.f });
 	healthBar_.setFillColor(sf::Color::Red);
 	healthBar_.setOrigin(healthBar_.getGlobalBounds().getCenter());
-	healthBar_.setPosition({ 114.f, 39.f });
+	healthBar_.setPosition({ 184.f, 80.f });
 
-	healthBarBackgroundSprite_.setScale({ 0.142f,0.22f });
+	healthBarBackgroundSprite_.setScale({ 1.f,1.f });
 	healthBarBackgroundSprite_.setOrigin(healthBarBackgroundSprite_.getGlobalBounds().getCenter());
-	healthBarBackgroundSprite_.setPosition({ 20.f, -33.f });
+	healthBarBackgroundSprite_.setPosition({ 184.f, 75.f });
 
-	healthDisplay_.setCharacterSize(20);
+	heartIconSprite_.setScale({ 0.9f, 0.9f });
+	heartIconSprite_.setOrigin(heartIconSprite_.getGlobalBounds().getCenter());
+	heartIconSprite_.setPosition({ 26.f, 80.f });
+
+	healthDisplay_.setCharacterSize(15);
 	healthDisplay_.setFillColor(sf::Color::White);
-	healthDisplay_.setPosition({ 90.f, 28.f });
+	healthDisplay_.setPosition({ 160.f, 67.f });
 
 	//Xp
 	xpBar_.setSize({ maxXpBarWidth_, 20.f });
 	xpBar_.setFillColor(sf::Color(119, 196, 254));
 	xpBar_.setOrigin({0.f, 0.f});
-	xpBar_.setPosition({ 237.f, 29.f });
+	xpBar_.setPosition({ 65.f, 29.f });
 
-	xpBarBackgroundSprite_.setScale({ 0.1f,0.05f });
+	xpBarBackgroundSprite_.setScale({ 1.f, .5f });
 	xpBarBackgroundSprite_.setOrigin(xpBarBackgroundSprite_.getGlobalBounds().getCenter());
-	xpBarBackgroundSprite_.setPosition({250.f, 25.f});
+	xpBarBackgroundSprite_.setPosition({ 433.f, 30.f });
 
+	//auto bounds = xpBarBackgroundSprite_.getGlobalBounds();
+
+	//std::cout << "Width: " << bounds.size.x << '\n';
+	//std::cout << "Height: " << bounds.size.y << '\n';  //For testing sizes
 }
 
 void HUD::Update(const Player& player) {
@@ -48,7 +58,7 @@ void HUD::Update(const Player& player) {
 
 	healthBar_.setSize({
 		maxHealthBarWidth_ * healthPercentage,
-		20.f
+		15.f
 		});
 
 	//Xp
@@ -67,6 +77,7 @@ void HUD::Draw(sf::RenderWindow& window) {
 	window.draw(healthBarBackgroundSprite_);
 	window.draw(healthBar_);
 	window.draw(healthDisplay_);
+	window.draw(heartIconSprite_);
 
 	//Xp
 	window.draw(xpBarBackgroundSprite_);

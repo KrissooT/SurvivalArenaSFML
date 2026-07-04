@@ -9,7 +9,7 @@ class HUD {
 	private:
 		sf::Font font_;
 
-		//Health bar
+		//Health
 		sf::Texture healthBarBackgroundTexture_;
 		sf::Sprite healthBarBackgroundSprite_;
 
@@ -18,7 +18,10 @@ class HUD {
 
 		sf::Text healthDisplay_;
 
-		//Xp bar
+		sf::Texture heartIconTexture_;
+		sf::Sprite heartIconSprite_;
+
+		//Xp
 		sf::Texture xpBarBackgroundTexture_;
 		sf::Sprite xpBarBackgroundSprite_;
 

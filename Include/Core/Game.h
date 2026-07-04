@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "UI/HUD.h"
+#include "Core/GameState.h"
 #include "Projectiles/Projectile.h"
 #include "Entities/Enemy.h"
 #include "Managers/EnemySpawner.h"
@@ -23,6 +24,7 @@ class Game {
 		std::vector<std::unique_ptr<Projectile>> projectiles_;
 		std::vector<std::unique_ptr<Pickup>> pickups_;
 		HUD hud_;
+		GameState state_;
 
 	public:
 

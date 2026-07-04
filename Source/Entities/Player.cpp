@@ -82,8 +82,42 @@ void Player::AddXp(int amount) {
 	{
 		currentXp_ -= xpToNextLevel_;
 		level_++;
+		levelUpPending_ = true;
 		xpToNextLevel_ += 250; // Hardcode for now, later mby add a system to scale;
 	}
+}
+
+void Player::ClearLevelUp() {
+	levelUpPending_ = false;
+}
+
+void Player::IncreaseDamage(float amount) {
+	damage_ += amount;
+}
+
+void Player::IncreaseMaxHealth(float amount) {
+	maxHealth_ += amount;
+}
+
+void Player::Heal(float amount) {
+
+	if (health_ + amount >= maxHealth_) {
+		health_ = maxHealth_;
+		return;
+	}
+
+	health_ += amount;
+}
+
+void Player::DecreaseShootInterval(float amount) {
+	if (shootInterval_ <= 0.4f) {
+		return;
+	}
+	shootInterval_ -= amount;
+}
+
+void Player::IncreaseSpeed(float amount) {
+	speed_ += amount;
 }
 
 sf::Vector2f Player::GetPosition()const {
@@ -108,4 +142,8 @@ int Player::GetXpToNextLevel()const {
 
 int Player::GetLevel()const {
 	return level_;
+}
+
+bool Player::IsLevelUpPending()const {
+	return levelUpPending_;
 }
