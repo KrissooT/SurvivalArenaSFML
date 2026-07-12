@@ -3,6 +3,7 @@
 #include "Entities/Player.h"
 
 #include <string>
+#include <functional>
 
 struct Upgrade {
 

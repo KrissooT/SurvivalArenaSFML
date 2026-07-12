@@ -83,7 +83,7 @@ void Player::AddXp(int amount) {
 		currentXp_ -= xpToNextLevel_;
 		level_++;
 		levelUpPending_ = true;
-		xpToNextLevel_ += 250; // Hardcode for now, later mby add a system to scale;
+		xpToNextLevel_ += 50; // Hardcode for now, later mby add a system to scale;
 	}
 }
 

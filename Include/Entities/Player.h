@@ -23,7 +23,7 @@ class Player : public LivingEntity {
 		float attractionBonus_ = 0.f;
 
 		int currentXp_ = 0;
-		int xpToNextLevel_ = 200;
+		int xpToNextLevel_ = 50;
 		int level_ = 1;
 
 	public:

@@ -13,6 +13,7 @@
 #include "Pickups/Pickup.h"
 #include "Pickups/XpOrb.h"
 #include "Upgrades/Upgrade.h"
+#include "Upgrades/UpgradeManager.h"
 
 class Game {
 
@@ -24,7 +25,8 @@ class Game {
 		std::vector<std::unique_ptr<Enemy>> enemies_;
 		std::vector<std::unique_ptr<Projectile>> projectiles_;
 		std::vector<std::unique_ptr<Pickup>> pickups_;
-		std::vector<Upgrade> allUpgrades_;
+		std::vector<Upgrade> currentChoices_;
+		UpgradeManager upgradeManager_;
 		HUD hud_;
 		GameState state_;
 		
