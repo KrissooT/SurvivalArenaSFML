@@ -11,7 +11,7 @@ class XpOrb : public Pickup {
 
 	public:
 		//Constructor
-		XpOrb(sf::Vector2f enemyPosition, int xp);
+		XpOrb(sf::Vector2f enemyPosition, int xp, Player& player);
 
 		//Core
 		void Update(float dt) override {}

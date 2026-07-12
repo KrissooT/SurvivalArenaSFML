@@ -2,8 +2,8 @@
 
 #include <cmath>
 
-XpOrb::XpOrb(sf::Vector2f enemyPosition, int xp) :
-	Pickup(120.f),
+XpOrb::XpOrb(sf::Vector2f enemyPosition, int xp, Player& player) :
+	Pickup(120.f, player.GetSpeed() + 50.f),
 	xp_(xp)
 {
 
@@ -19,7 +19,7 @@ void XpOrb::Update(float dt,Player& player) {
 
 	float distance = std::sqrt(differnce.x * differnce.x + differnce.y * differnce.y);
 
-	float attractionPlusBonus = attractionRadius_ + player.GetXpAttractionBonus();
+	float attractionPlusBonus = attractionRadius_ + player.GetAttractionBonus();
 
 	if (distance <= attractionPlusBonus) {
 		MoveToPlayer(dt, player.GetPosition(), xpOrb_);

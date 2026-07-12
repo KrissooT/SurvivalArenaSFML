@@ -10,6 +10,26 @@ Game::Game() :
 	state_(GameState::Playing)
 {
 	window_.setFramerateLimit(60);
+
+	//Upgrades
+
+	allUpgrades_.push_back({
+		"Damage Increase",
+		"Increase Player's damage by 15",
+		[](Player& player) {player.IncreaseDamage(15.f); }
+		});
+
+	allUpgrades_.push_back({
+		"Movement Speed Increase",
+		"Increase Player's movement speed by 50",
+		[](Player& player) {player.IncreaseSpeed(50.f); }
+		});
+
+	allUpgrades_.push_back({
+		"Max Health Increase",
+		"Increase Player's maximum health by 25",
+		[](Player& player) {player.IncreaseMaxHealth(25.f); }
+		});
 }
 
 bool Game::IsRunning()const {
@@ -27,8 +47,8 @@ void Game::ProcessEvents() {
 void Game::Update(float dt) {
 	//TODO
 
-	sf::Vector2i mousePos = sf::Mouse::getPosition(window_);
-	std::cout << mousePos.x << "X, " << mousePos.y << " Y\n"; //Just for testing
+	//sf::Vector2i mousePos = sf::Mouse::getPosition(window_);
+	//std::cout << mousePos.x << "X, " << mousePos.y << " Y\n"; //Just for testing
 
 	if (player_.IsLevelUpPending()) {
 		state_ = GameState::Leveling;
@@ -66,7 +86,7 @@ void Game::Update(float dt) {
 					enemy->TakeDamage(projectile->GetDamage());
 					projectile->Destroy();
 					if (enemy->IsDead()) {
-						pickups_.push_back(std::make_unique<XpOrb>(enemy->GetPosition(), enemy->GetXp()));
+						pickups_.push_back(std::make_unique<XpOrb>(enemy->GetPosition(), enemy->GetXp(), player_));
 					}
 					break;
 				}
@@ -108,14 +128,23 @@ void Game::Update(float dt) {
 		break;
 	case GameState::Leveling:
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Num1)) {
-			player_.IncreaseDamage(100.f);
-			player_.DecreaseShootInterval(0.2f);
-			player_.IncreaseMaxHealth(50.f);
-			player_.Heal(50.f);
-			player_.IncreaseSpeed(50.f);
+			allUpgrades_[0].apply_(player_);
 			player_.ClearLevelUp();
 			state_ = GameState::Playing;
 		}
+		
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Num2)) {
+			allUpgrades_[1].apply_(player_);
+			player_.ClearLevelUp();
+			state_ = GameState::Playing;
+		}
+		
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Num3)) {
+			allUpgrades_[2].apply_(player_);
+			player_.ClearLevelUp();
+			state_ = GameState::Playing;
+		}
+
 		break;
 	}
 }

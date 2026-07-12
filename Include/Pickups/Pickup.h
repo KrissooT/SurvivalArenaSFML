@@ -11,11 +11,11 @@ class Pickup : public Entity {
 		bool collected_ = false;
 
 		float attractionRadius_;
-		float attractionSpeed_ = 250.f;
+		float attractionSpeed_;
 
 	public:
 		//Constructor
-		Pickup(float attractionRadius);
+		Pickup(float attractionRadius, float attractionSpeed);
 
 		//Core
 		virtual void Update(float dt, Player& player) = 0;

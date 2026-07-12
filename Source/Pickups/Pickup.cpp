@@ -1,7 +1,8 @@
 #include "Pickups/Pickup.h"
 
-Pickup::Pickup(float attractionRadius) :
-	attractionRadius_(attractionRadius)
+Pickup::Pickup(float attractionRadius, float attractionSpeed) :
+	attractionRadius_(attractionRadius),
+	attractionSpeed_(attractionSpeed)
 {
 }
 

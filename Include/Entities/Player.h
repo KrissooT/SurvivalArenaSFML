@@ -20,7 +20,7 @@ class Player : public LivingEntity {
 
 		bool levelUpPending_ = false;
 
-		float xpAttractionBonus_ = 0.f;
+		float attractionBonus_ = 0.f;
 
 		int currentXp_ = 0;
 		int xpToNextLevel_ = 200;
@@ -41,17 +41,20 @@ class Player : public LivingEntity {
 
 		void ClearLevelUp();
 
+		//Upgrades(Attributes)
 		void IncreaseDamage(float amount);
 		void IncreaseMaxHealth(float amount);
 		void Heal(float amount);
 		void DecreaseShootInterval(float amount);
 		void IncreaseSpeed(float amount);
+		void IncreaseAttackRange(float amount);
+		void IncreaseAttractionRange(float amount);
 
 		//Getters
 		sf::Vector2f GetPosition()const override;
 		sf::FloatRect GetBounds()const override;
 
-		float GetXpAttractionBonus()const;
+		float GetAttractionBonus()const;
 		
 		int GetCurrentXp()const;
 		int GetXpToNextLevel()const;

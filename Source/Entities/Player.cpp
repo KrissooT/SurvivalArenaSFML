@@ -120,6 +120,14 @@ void Player::IncreaseSpeed(float amount) {
 	speed_ += amount;
 }
 
+void Player::IncreaseAttackRange(float amount) {
+	attackRange_ += amount;
+}
+
+void Player::IncreaseAttractionRange(float amount) {
+	attractionBonus_ += amount;
+}
+
 sf::Vector2f Player::GetPosition()const {
 	return player_.getPosition();
 }
@@ -128,8 +136,8 @@ sf::FloatRect Player::GetBounds()const {
 	return player_.getGlobalBounds();
 }
 
-float Player::GetXpAttractionBonus()const {
-	return xpAttractionBonus_;
+float Player::GetAttractionBonus()const {
+	return attractionBonus_;
 }
 
 int Player::GetCurrentXp()const {
