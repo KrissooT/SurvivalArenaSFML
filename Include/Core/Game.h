@@ -14,11 +14,15 @@
 #include "Pickups/XpOrb.h"
 #include "Upgrades/Upgrade.h"
 #include "Upgrades/UpgradeManager.h"
+#include "Upgrades/UpgradeCard.h"
 
 class Game {
 
 	private:
 
+		sf::Font font_;
+
+		sf::RectangleShape upgradePanel;
 		sf::RenderWindow window_;
 		Player player_;
 		EnemySpawner enemySpawner_;
@@ -26,6 +30,7 @@ class Game {
 		std::vector<std::unique_ptr<Projectile>> projectiles_;
 		std::vector<std::unique_ptr<Pickup>> pickups_;
 		std::vector<Upgrade> currentChoices_;
+		std::vector<UpgradeCard> cards_;
 		UpgradeManager upgradeManager_;
 		HUD hud_;
 		GameState state_;

@@ -78,7 +78,7 @@ const std::vector<std::unique_ptr<Enemy>>& enemies)
 void Player::AddXp(int amount) {
 	currentXp_ += amount;
 
-	while (currentXp_ >= xpToNextLevel_)
+	if (currentXp_ >= xpToNextLevel_)
 	{
 		currentXp_ -= xpToNextLevel_;
 		level_++;
