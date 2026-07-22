@@ -62,14 +62,6 @@ void HUD::Update(const Player& player, Camera& camera) {
 		15.f
 		});
 
-
-	//healthBar_.setPosition({ player.GetPosition().x - 220.f, player.GetPosition().y - 275.f });
-	//healthBarBackgroundSprite_.setPosition({ player.GetPosition().x - 220.f, player.GetPosition().y - 280.f });
-	//heartIconSprite_.setPosition({ player.GetPosition().x - 375.f, player.GetPosition().y - 275.f });
-	//healthDisplay_.setPosition({ player.GetPosition().x - 255.f, player.GetPosition().y - 290.f });
-
-	//healthBar_.setPosition({camera.GetPosition()});
-
 	//Xp
 	float xpPercentage = (float)player.GetCurrentXp() / (float)player.GetXpToNextLevel();
 
@@ -79,10 +71,6 @@ void HUD::Update(const Player& player, Camera& camera) {
 		maxXpBarWidth_ * xpPercentage,
 		20.f
 		});
-
-
-	//xpBarBackgroundSprite_.setPosition({});
-	//xpBar_.setPosition({});
 
 }
 

@@ -2,6 +2,8 @@
 
 #include "Entities/LivingEntity.h"
 
+class Camera;
+
 class Enemy : public LivingEntity {
 
 	protected:

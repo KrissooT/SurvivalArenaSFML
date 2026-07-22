@@ -1,5 +1,6 @@
 #include "Entities/Enemy.h"
 #include "Config/GameConfig.h"
+#include "Camera/Camera.h"
 
 #include <random>
 #include <cmath>
@@ -28,22 +29,26 @@ sf::Vector2f Enemy::RandomPosition(sf::Vector2f playerPos)const {
 	static std::random_device rd;
 	static std::mt19937 gen(rd());
 
-	std::uniform_real_distribution<float> xDist(0.f, static_cast<float>(gConfig.windowSize.x));
-	std::uniform_real_distribution<float> yDist(0.f, static_cast<float>(gConfig.windowSize.y));
+	const float cameraHalfW = 640.f; //hardcode for now
+	const float cameraHalfH = 360.f; // hardcode for now
+	const float margin = 50.f; //hardcode for now
 
-	constexpr float minDistanceToSpawn = 150.f;
+	float top = playerPos.y - cameraHalfH - margin;
+	float bottom = playerPos.y + cameraHalfH + margin;
+	float left = playerPos.x - cameraHalfW - margin;
+	float right = playerPos.x + cameraHalfW + margin;
 
-	sf::Vector2f pos;
-	float dist = 0.f;
+	std::uniform_int_distribution<int> sideDist(0, 3);
+	std::uniform_real_distribution<float> xDist(left, right);
+	std::uniform_real_distribution<float> yDist(top, bottom);
 
-	do {
-		pos = { xDist(gen), yDist(gen) };
-
-		sf::Vector2f dif = pos - playerPos;
-		dist = std::sqrt(dif.x * dif.x + dif.y * dif.y);
-	} while (dist < minDistanceToSpawn);
-
-	return pos;
+	int side = sideDist(gen);
+	switch (side) {
+	case 0: return { xDist(gen), top };
+	case 1: return { xDist(gen), bottom };
+	case 2: return { left,  yDist(gen) };
+	default: return { right, yDist(gen) };
+	}
 }
 
 int Enemy::GetXp()const {
