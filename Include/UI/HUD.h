@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entities/Player.h"
+#include "Camera/Camera.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -32,6 +33,6 @@ class HUD {
 
 		HUD();
 
-		void Update(const Player& player);
+		void Update(const Player& player, Camera& camera);
 		void Draw(sf::RenderWindow& window);
 };

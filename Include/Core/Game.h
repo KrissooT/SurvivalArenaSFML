@@ -15,6 +15,7 @@
 #include "Upgrades/Upgrade.h"
 #include "Upgrades/UpgradeManager.h"
 #include "Upgrades/UpgradeCard.h"
+#include "Camera/Camera.h"
 
 class Game {
 
@@ -22,7 +23,7 @@ class Game {
 
 		sf::Font font_;
 
-		sf::RectangleShape upgradePanel;
+		sf::RectangleShape upgradePanel_;
 		sf::RenderWindow window_;
 		Player player_;
 		EnemySpawner enemySpawner_;
@@ -34,6 +35,7 @@ class Game {
 		UpgradeManager upgradeManager_;
 		HUD hud_;
 		GameState state_;
+		Camera camera_;
 		
 	public:
 

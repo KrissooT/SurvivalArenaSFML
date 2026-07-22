@@ -24,7 +24,7 @@ void Enemy::MoveToPlayer(float dt, sf::Vector2f playerPos, sf::Shape& monsterSha
 }
 
 sf::Vector2f Enemy::RandomPosition(sf::Vector2f playerPos)const {
-
+	
 	static std::random_device rd;
 	static std::mt19937 gen(rd());
 

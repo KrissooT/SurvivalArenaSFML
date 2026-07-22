@@ -13,7 +13,7 @@ class Bullet : public Projectile {
 	public:
 		Bullet(sf::Vector2f startPos, sf::Vector2f direction, float damage);
 
-		void Update(float dt) override;
+		void Update(float dt, Camera camera) override;
 		void Draw(sf::RenderWindow& window) override;
 
 		sf::Vector2f GetPosition()const override;

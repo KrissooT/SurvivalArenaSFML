@@ -11,10 +11,9 @@ Game::Game() :
 	font_("Content/Fonts/Font.ttf")
 {
 	window_.setFramerateLimit(60);
-	upgradePanel.setSize({ 800.f, 250.f });
-	upgradePanel.setFillColor(sf::Color(20, 20, 20, 200));
-	upgradePanel.setOrigin(upgradePanel.getSize() / 2.f);
-	upgradePanel.setPosition({ (float)gConfig.windowSize.x / 2, (float)gConfig.windowSize.y / 2 });
+	upgradePanel_.setSize({ 750.f, 650.f });
+	upgradePanel_.setFillColor(sf::Color(20, 20, 20, 200));
+	upgradePanel_.setOrigin(upgradePanel_.getSize() / 2.f);
 }
 
 bool Game::IsRunning()const {
@@ -87,6 +86,7 @@ void Game::Update(float dt) {
 
 	switch(state_) {
 	case GameState::Playing:
+		camera_.Update(player_.GetPosition());
 		player_.Update(dt);
 
 		if (player_.IsDead()) {
@@ -108,7 +108,7 @@ void Game::Update(float dt) {
 		player_.Shoot(projectiles_, enemies_);
 
 		for (auto& projectile : projectiles_) {
-			projectile->Update(dt);
+			projectile->Update(dt, camera_);
 		}
 
 		for (auto& projectile : projectiles_) {
@@ -155,10 +155,11 @@ void Game::Update(float dt) {
 			enemySpawner_.RestartStage();
 		}
 
-		hud_.Update(player_);
+		hud_.Update(player_, camera_);
 		break;
 
 	case GameState::Leveling:
+		upgradePanel_.setPosition({ player_.GetPosition() });
 		if (cards_.empty())
 		{
 			currentChoices_ = upgradeManager_.GetRandomUpgrades(3);
@@ -166,7 +167,7 @@ void Game::Update(float dt) {
 			for (int i = 0; i < currentChoices_.size(); i++)
 			{
 				UpgradeCard card(currentChoices_[i], font_);
-				card.SetPosition(200.f + i * 250.f, 300.f);
+				card.SetPosition(upgradePanel_.getPosition().x -350.f + i * 250.f, upgradePanel_.getPosition().y - 60.f);
 
 				cards_.push_back(card);
 			}
@@ -187,6 +188,8 @@ void Game::Update(float dt) {
 void Game::Render() {
 	window_.clear();
 
+	camera_.Draw(window_);
+
 	player_.Draw(window_);
 
 	for (auto& projectile : projectiles_) {
@@ -203,7 +206,7 @@ void Game::Render() {
 
 	if (state_ == GameState::Leveling)
 	{
-		window_.draw(upgradePanel);
+		window_.draw(upgradePanel_);
 
 		for (auto& card : cards_)
 		{
@@ -213,6 +216,8 @@ void Game::Render() {
 		window_.display();
 		return;
 	}
+
+	window_.setView(window_.getDefaultView());
 
 	hud_.Draw(window_);
 

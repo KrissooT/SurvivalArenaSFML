@@ -14,6 +14,7 @@ HUD::HUD() :
 	maxXpBarWidth_(735.f),
 	heartIconTexture_("Content/Backgrounds/Heart.png"),
 	heartIconSprite_(heartIconTexture_)
+
 {
 	//Health
 	healthBar_.setSize({ maxHealthBarWidth_,24.f });
@@ -49,7 +50,7 @@ HUD::HUD() :
 	//std::cout << "Height: " << bounds.size.y << '\n';  //For testing sizes
 }
 
-void HUD::Update(const Player& player) {
+void HUD::Update(const Player& player, Camera& camera) {
 	healthDisplay_.setString("HP: " + std::to_string((int)player.GetHealth()));
 
 	//Health
@@ -61,6 +62,14 @@ void HUD::Update(const Player& player) {
 		15.f
 		});
 
+
+	//healthBar_.setPosition({ player.GetPosition().x - 220.f, player.GetPosition().y - 275.f });
+	//healthBarBackgroundSprite_.setPosition({ player.GetPosition().x - 220.f, player.GetPosition().y - 280.f });
+	//heartIconSprite_.setPosition({ player.GetPosition().x - 375.f, player.GetPosition().y - 275.f });
+	//healthDisplay_.setPosition({ player.GetPosition().x - 255.f, player.GetPosition().y - 290.f });
+
+	//healthBar_.setPosition({camera.GetPosition()});
+
 	//Xp
 	float xpPercentage = (float)player.GetCurrentXp() / (float)player.GetXpToNextLevel();
 
@@ -70,6 +79,11 @@ void HUD::Update(const Player& player) {
 		maxXpBarWidth_ * xpPercentage,
 		20.f
 		});
+
+
+	//xpBarBackgroundSprite_.setPosition({});
+	//xpBar_.setPosition({});
+
 }
 
 void HUD::Draw(sf::RenderWindow& window) {

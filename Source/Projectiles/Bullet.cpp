@@ -1,4 +1,6 @@
 #include "Projectiles/Bullet.h"
+#include "Camera/Camera.h"
+
 
 Bullet::Bullet(sf::Vector2f startPos, sf::Vector2f direction, float damage) : 
 	Projectile(damage, 300.f),
@@ -10,10 +12,10 @@ Bullet::Bullet(sf::Vector2f startPos, sf::Vector2f direction, float damage) :
 	bullet_.setPosition(startPos);
 }
 
-void Bullet::Update(float dt) {
+void Bullet::Update(float dt, Camera camera) {
 	bullet_.move({direction_ * speed_ * dt});
 
-	if (IsOutOfBounds(bullet_.getPosition())) {
+	if (IsOutOfBounds(bullet_.getPosition(), camera.GetBounds())) {
 		Destroy();
 	}
 
